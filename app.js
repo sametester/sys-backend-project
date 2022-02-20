@@ -1,8 +1,10 @@
 require('dotenv').config();
+require('./middlewares/passport.js');
 const express = require('express');
+
 const cors = require('cors');
 const userRoute = require('./routes/userRoute');
-
+const postRoute = require('./routes/postRoute');
 //* CREATE TABLE
 // const { sequelize } = require('./models');
 // sequelize.sync({ force: true });
@@ -14,6 +16,7 @@ app.use(express.json());
 
 // routers
 app.use('/users', userRoute);
+app.use('/posts', postRoute);
 
 app.use((req, res) => {
   res.status(404).json({ message: 'resource not found on this server' });
