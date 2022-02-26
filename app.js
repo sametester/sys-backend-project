@@ -6,8 +6,8 @@ const cors = require('cors');
 const userRoute = require('./routes/userRoute');
 const postRoute = require('./routes/postRoute');
 //* CREATE TABLE
-// const { sequelize } = require('./models');
-// sequelize.sync({ force: true });
+const { sequelize } = require('./models');
+sequelize.sync({ force: false });
 
 const app = express();
 
