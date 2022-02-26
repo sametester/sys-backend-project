@@ -19,12 +19,12 @@ app.use('/users', userRoute);
 app.use('/posts', postRoute);
 
 app.use((req, res) => {
-  res.status(404).json({ message: 'resource not found on this server' });
+    res.status(404).json({ message: 'resource not found on this server' });
 });
 
 app.use((err, req, res, next) => {
-  console.log(err);
-  res.status(500).json({ message: err.message });
+    console.log(err);
+    res.status(500).json({ message: err.message });
 });
 
 const port = process.env.PORT || 8000;
