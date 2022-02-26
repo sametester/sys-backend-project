@@ -37,3 +37,13 @@ exports.getMe = (req, res, next) => {
         user: { id, firstName, lastName, profileImg, email },
     });
 };
+
+exports.getMyData = async (req, res, next) => {
+    try {
+        const { firstName } = req.params;
+        const user = await User.findOne({ where: { firstName } });
+        res.status(200).json({ user });
+    } catch (err) {
+        next(err);
+    }
+};

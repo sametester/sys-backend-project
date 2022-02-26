@@ -10,13 +10,14 @@ const upload = require('../middlewares/upload');
 const router = express.Router();
 
 router.get('/me', auth, userController.getMe); // เพิ่ม 29/1/65
+router.get('/getMyData/:firstName', auth, userController.getMyData); // เพิ่ม 29/1/65
 router.post('/register', authController.register);
 router.post('/login', authController.login);
 router.patch(
-  '/profile-img',
-  auth,
-  upload.single('profileImg'),
-  userController.updateProfileImg
+    '/profile-img',
+    auth,
+    upload.single('profileImg'),
+    userController.updateProfileImg
 );
 
 module.exports = router;
