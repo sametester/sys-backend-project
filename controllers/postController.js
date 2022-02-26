@@ -91,7 +91,17 @@ exports.createPost = async (req, res, next) => {
             userId: payload.id,
             img: result.secure_url,
         });
-        res.status(201).json({ post });
+
+        const user = await User.findOne({ where: { id: payload.id } });
+
+        const resPost = {
+            ...post.toJSON(),
+            User: user,
+            Comments: [],
+            Likes: [],
+        };
+
+        res.status(201).json({ post: resPost });
     } catch (err) {
         next(err);
     }
