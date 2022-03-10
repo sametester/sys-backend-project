@@ -4,7 +4,6 @@ const authController = require('../controllers/authController');
 const userController = require('../controllers/userController');
 const auth = passport.authenticate('jwt-auth', { session: false });
 
-// const authenticate = require('../middlewares/authenticate');
 const upload = require('../middlewares/upload');
 
 const router = express.Router();
@@ -14,10 +13,10 @@ router.get('/getMyData/:firstName', auth, userController.getMyData); // เพ�
 router.post('/register', authController.register);
 router.post('/login', authController.login);
 router.patch(
-    '/profile-img',
-    auth,
-    upload.single('profileImg'),
-    userController.updateProfileImg
+  '/profile-img',
+  auth,
+  upload.single('profileImg'),
+  userController.updateProfileImg
 );
 
 module.exports = router;

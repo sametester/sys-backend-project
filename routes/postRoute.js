@@ -10,10 +10,10 @@ const auth = passport.authenticate('jwt-auth', { session: false });
 router.get('/', postController.getAllPost);
 router.post('/', auth, upload.single('profileImg'), postController.createPost);
 router.patch(
-    '/:postId',
-    auth,
-    upload.single('profileImg'),
-    postController.updatePost
+  '/:postId',
+  auth,
+  upload.single('profileImg'),
+  postController.updatePost
 );
 router.delete('/:id', auth, postController.deletePost);
 router.post('/like/:id', auth, postController.likePost);
